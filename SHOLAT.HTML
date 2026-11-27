@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #FA699E;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0d5c3e;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #FFE7F0;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #FA699E;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #FA699E;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #FA699E;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="SHOLATHANA.PNG" alt="Logo Muslim.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">ISLAMIC HANA</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="INDEX.HTML" class="nav-link">BERANDA</a></li>
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">keutamaan sholat</a></li>
+      <li class="nav-item"><a href="sifat.HTML" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.HTML" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12.HTML" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.HTML" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>Ayo Mulai Belajar Fikih Sholat!𝜗ৎ</h1>
+   <center><img src="FIKIHHANA.PNG" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+	<h1>FIKIH SHOLAT𝄞⨾𓍢ִ໋</h1>
+
+   <h2>Pengertian Sholat</h2>
+
+<p>
+Sholat adalah ibadah yang terdiri dari perkataan
+dan perbuatan tertentu yang dimulai dengan
+takbiratul ihram dan diakhiri dengan salam,
+serta dilaksanakan dengan memenuhi syarat
+dan rukun yang telah ditetapkan dalam syariat Islam.
+</p>
+
+<p>
+Sholat merupakan bentuk penghambaan dan
+ketaatan seorang muslim kepada Allah سبحانه وتعالى.
+Melalui sholat, seorang hamba dapat mendekatkan
+diri kepada Allah, memohon ampunan, meminta
+pertolongan, serta mengungkapkan rasa syukur
+atas segala nikmat yang telah diberikan.
+</p>
+
+<p>
+Sholat juga menjadi sarana untuk mengingat Allah
+dalam kehidupan sehari-hari. Dengan melaksanakan
+sholat secara khusyuk dan teratur, seorang muslim
+dilatih untuk memiliki kedisiplinan, kesabaran,
+ketenangan hati, serta menjauhi perbuatan
+keji dan mungkar.
+</p>
+
+<p>
+Oleh karena itu, sholat wajib dijaga dan
+dilaksanakan sesuai tuntunan Rasulullah ﷺ,
+karena sholat merupakan salah satu ibadah
+terpenting dalam kehidupan seorang muslim.
+</p>
+    
+    <h2>Dalil Sholat</h2>
+    <p class="arabic">
+        وَأَقِيمُوا الصَّلَاةَ
+    </p>
+    <p>
+        "Dan dirikanlah sholat."
+        <br>QS. Al-Baqarah: 43
+    </p>
+    
+    <h2>Hukum Sholat</h2>
+    <p>
+        Sholat lima waktu hukumnya wajib bagi
+        setiap muslim yang telah memenuhi
+        syarat wajib sholat.
+    </p>
+    
+    <h2>Syarat Sah Sholat</h2>
+    <ul>
+        <li>Suci dari hadas dan najis</li>
+        <li>Menutup aurat</li>
+        <li>Menghadap kiblat</li>
+        <li>Sudah masuk waktu sholat</li>
+    </ul>
+    
+    <h2>Rukun Sholat</h2>
+    <ul>
+        <li>Niat</li>
+        <li>Takbiratul ihram</li>
+        <li>Berdiri bagi yang mampu</li>
+        <li>Membaca Al-Fatihah</li>
+        <li>Rukuk dan i'tidal</li>
+        <li>Sujud</li>
+        <li>Duduk di antara dua sujud</li>
+        <li>Tasyahud akhir</li>
+        <li>Salam dan tertib</li>
+    </ul>
+    
+    <h2>Hikmah Sholat</h2>
+    <p>
+        Sholat mendekatkan diri kepada Allah,
+        melatih kedisiplinan, menenangkan hati,
+        dan mencegah perbuatan keji serta mungkar.
+    </p>
+    
+    <p class="arabic">
+        إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ
+        الْفَحْشَاءِ وَالْمُنْكَرِ
+    </p>
+    <p>QS. Al-Ankabut: 45</p>
+	<P>────୨ৎ────</P>
+  </main>
+
+</body>
+</html>
